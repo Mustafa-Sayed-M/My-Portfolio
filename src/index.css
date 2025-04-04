@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* GLobal */
+html,
+body {
+    font-family: "Montserrat", sans-serif;
+    scroll-padding-top: 100px;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+}
+
+/* Custom Scroll Bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #2a1454;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #8750F7;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #7439E7;
+}
+
+/* Custom Selection */
+::selection {
+    color: white;
+    background-color: #7439E7;
+}
+
+/* Section */
+section {
+    padding: 2.5rem 0;
+}
+
+.point-light {
+    overflow: hidden;
+    position: relative;
+}
+
+.point-light::before,
+.point-light::after {
+    content: '';
+    width: 384px;
+    opacity: .2;
+    height: 384px;
+    position: absolute;
+    filter: blur(64px);
+    border-radius: 50%;
+    background-color: #8750f7;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    -webkit-filter: blur(64px);
+}
+
+@media (max-width: 768px) {
+
+    .point-light::before,
+    .point-light::after {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.point-light::before {
+    top: -12rem;
+    right: -12rem;
+}
+
+.point-light::after {
+    bottom: -12rem;
+    left: -12rem;
+}
+
+/* Section Header */
+.section-header h2::before {
+    left: 0;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    animation: scale-x linear 3s infinite;
+    position: absolute;
+    background-image: linear-gradient(to right, #7439E7, #fff);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-animation: scale-x linear 3s infinite;
+}
+
+/* Navbar */
+nav .navbar-links a::before {
+    left: 0;
+    width: 0;
+    bottom: 0;
+    content: '';
+    height: 4px;
+    border-radius: 4px;
+    transition: ease-out 150ms;
+    position: absolute;
+    background-color: #7439E7;
+    box-shadow: 0 0 10px #7439E7;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    -webkit-transition: ease-out 150ms;
+    -moz-transition: ease-out 150ms;
+    -ms-transition: ease-out 150ms;
+    -o-transition: ease-out 150ms;
+}
+
+nav .navbar-links a.active::before {
+    width: 100%;
+}
+
+/* Header */
+header .image-container {
+    animation: up-down linear infinite 5s;
+    -webkit-animation: up-down linear infinite 5s;
+}
+
+/* Animations */
+@keyframes up-down {
+    0% {
+        transform: translateY(0);
+        -webkit-transform: translateY(0);
+        -moz-transform: translateY(0);
+        -ms-transform: translateY(0);
+        -o-transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(20px);
+        -webkit-transform: translateY(20px);
+        -moz-transform: translateY(20px);
+        -ms-transform: translateY(20px);
+        -o-transform: translateY(20px);
+    }
+
+    80% {
+        transform: translateY(-20px);
+        -webkit-transform: translateY(-10px);
+        -moz-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        -o-transform: translateY(-10px);
+    }
+}
+
+@keyframes scale-x {
+    0% {
+        transform: scaleX(1);
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        -o-transform: scaleX(1);
+    }
+
+    50% {
+        transform: scaleX(0.8);
+        -webkit-transform: scaleX(0.8);
+        -moz-transform: scaleX(0.8);
+        -ms-transform: scaleX(0.8);
+        -o-transform: scaleX(0.8);
+    }
+
+    0% {
+        transform: scaleX(1);
+        -webkit-transform: scaleX(1);
+        -moz-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+        -o-transform: scaleX(1);
+    }
+}
