@@ -33,9 +33,8 @@ function ProjectsSection() {
                             <>Loading...</>
                         ) : (
                             data
-                                .slice(0, 9)
                                 .filter(repo => (repo.id !== 960445720 && repo.id !== 616718455))
-                                .sort((a, b) => b.stargazers_count - a.stargazers_count)
+                                .slice(0, 6)
                                 .map((repo, index) => (
                                     <ProjectCard projectData={repo} index={index} key={index} />
                                 ))
