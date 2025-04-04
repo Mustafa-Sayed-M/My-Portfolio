@@ -88,7 +88,7 @@ function NavLinks({ isOpen, setIsOpen }) {
         <div
             ref={ref1}
             onClick={() => setIsOpen(false)}
-            className={`navbar-links ${isOpen ? 'max-lg:opacity-100' : 'max-lg:opacity-0'} transition-opacity max-lg:absolute max-lg:left-0 max-lg:top-full max-lg:border-t max-lg:border-t-purple-color max-lg:w-full max-lg:h-[calc(100vh-100px)] max-lg:bg-black/20 max-lg:backdrop-blur-sm`}
+            className={`navbar-links ${isOpen ? 'max-lg:opacity-100' : 'max-lg:opacity-0'} transition-opacity max-lg:absolute max-lg:left-0 max-lg:top-full max-lg:border-t max-lg:border-t-purple-color max-lg:w-full max-lg:h-[calc(100dvh-100px)] max-lg:bg-black/20 max-lg:backdrop-blur-sm`}
         >
             <ul onClick={e => e.stopPropagation()} ref={ref2} className={`${isOpen ? 'max-lg:translate-x-0' : 'max-lg:-translate-x-full'} transition flex items-center gap-1 max-lg:flex-col max-lg:bg-body-color max-lg:h-full max-lg:w-[300px] max-lg:p-5`}>
                 {
