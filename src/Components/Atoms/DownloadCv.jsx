@@ -3,7 +3,8 @@ import React from 'react';
 function DownloadCv() {
     return (
         <a
-            download
+            target='_blank'
+            rel="noreferrer"
             href={`https://my-profile-data.vercel.app/uploads/files/my_cv.pdf`}
             className='block text-center py-2 px-8 rounded-full border-2 border-purple-color text-purple-color font-medium transition sm:hover:bg-purple-color sm:hover:text-white'
         >

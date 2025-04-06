@@ -2,22 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import CardOverlay from './CardOverlay';
 import Technologies from './Technologies';
-
-// Row Url:
-const rowUrl = 'https://raw.githubusercontent.com';
+import { fetchTechnologies, githubRowUrl } from '../../../../Utils/api';
 
 function ProjectCard({ index, projectData: { id, full_name, homepage, name, description, html_url } }) {
 
     const { data: technologiesData, isLoading: technologiesIsLoading } = useQuery({
         queryKey: [`technologies_${name}_${id}`],
-        queryFn: async () => {
-            try {
-                const res = await fetch(`${rowUrl}/${full_name}/main/technologies.json`);
-                return await res.json();
-            } catch (err) {
-                console.log(err);
-            }
-        },
+        queryFn: async () => fetchTechnologies(full_name),
         refetchOnWindowFocus: false
     });
 
@@ -37,7 +28,7 @@ function ProjectCard({ index, projectData: { id, full_name, homepage, name, desc
                 {/* Image */}
                 <picture>
                     <img
-                        src={`${rowUrl}/${full_name}/main/preview.webp`}
+                        src={`${githubRowUrl}/${full_name}/main/preview.webp`}
                         style={{
                             transformOrigin: 'top center'
                         }}

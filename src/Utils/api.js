@@ -1,3 +1,5 @@
+export const a = '';
+export const githubRowUrl = 'https://raw.githubusercontent.com';
 const profileDataUrl = `https://my-profile-data.vercel.app`;
 const reposUrl = `https://api.github.com/users/mustafa-sayed-m/repos`;
 
@@ -21,3 +23,7 @@ export const fetchSkills = async () => {
 export const fetchRepos = async () => {
     return await fetchData(reposUrl);
 };
+
+export const fetchTechnologies = async (full_name) => {
+    return await fetchData(`${githubRowUrl}/${full_name}/main/technologies.json`);
+}
