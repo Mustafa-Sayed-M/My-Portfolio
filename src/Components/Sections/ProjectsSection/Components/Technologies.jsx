@@ -10,15 +10,14 @@ function Technologies({ technologiesIsLoading, technologiesData }) {
                         className={`w-10 h-10 flex items-center justify-center bg-slate-900 border border-slate-700 animate-pulse rounded-full -ms-2 first-of-type:ms-0`}
                     ></li>))
                 ) : (
-                    technologiesData.map((tech, index) => (<li
+                    technologiesData.map((techUrl, index) => (<li
                         key={index}
-                        title={tech.toUpperCase()}
                         className={`w-10 h-10 flex items-center justify-center bg-slate-900 rounded-full border border-purple-color -ms-2 first-of-type:ms-0`}
                     >
                         <picture>
                             <img
-                                src={`${process.env.PUBLIC_URL}/assets/images/skills/${tech}.svg`}
-                                alt={tech}
+                                src={techUrl}
+                                alt={'Tech Icon'}
                                 width={20}
                                 height={20}
                             />

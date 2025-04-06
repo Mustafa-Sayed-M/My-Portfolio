@@ -2,6 +2,7 @@ import React from 'react';
 import SectionHeader from '../Components/SectionHeader';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from './Components/ProjectCard';
+import { fetchRepos } from '../../../Utils/api';
 
 // REPOS IDS:
 const reposIds = [
@@ -12,15 +13,6 @@ const reposIds = [
     921847559, // reset-countries-api
     948746558, // Stream-Vibe
 ];
-
-const fetchRepos = async () => {
-    try {
-        const res = await fetch(`https://api.github.com/users/mustafa-sayed-m/repos`);
-        return await res.json();
-    } catch (err) {
-        console.log(err);
-    }
-};
 
 const filterRepos = (repos) => {
     return repos.filter(repo => reposIds.includes(repo.id));

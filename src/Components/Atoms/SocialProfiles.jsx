@@ -1,29 +1,41 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import socialProfilesData from '../../Data/socialProfiles.json';
+import { fetchSocialProfiles } from '../../Utils/api';
 
 function SocialProfiles({ className }) {
+
+    const { data, isLoading } = useQuery({
+        queryKey: ['social_profiles'],
+        queryFn: fetchSocialProfiles,
+        refetchOnWindowFocus: false
+    });
+
     return (
         <ul className={`flex items-center justify-center gap-2 max-md:w-full ${className}`}>
             {
-                socialProfilesData.map((link, index) => (
-                    <li
-                        key={index}
-                        data-aos='fade-left'
-                        data-aos-offset={20}
-                        data-aos-delay={50 * index}
-                    >
-                        <a
-                            href={link.href}
-                            target='_blank'
-                            rel="noreferrer"
-                            title={`${link.name} Profile`}
-                            className='block w-10 h-10 leading-10 text-center rounded-full border-2 border-purple-color text-purple-color sm:hover:bg-purple-color sm:hover:text-white transition'
+                isLoading ? (
+                    <>Loading...</>
+                ) : (
+                    (data || []).map((link, index) => (
+                        <li
+                            key={index}
+                            data-aos='fade-left'
+                            data-aos-offset={20}
+                            data-aos-delay={50 * index}
                         >
-                            <span className='sr-only'>{link.name}</span>
-                            <i className={`fa-brands fa-${link.icon} fa-fw`}></i>
-                        </a>
-                    </li>
-                ))}
+                            <a
+                                href={link.href}
+                                target='_blank'
+                                rel="noreferrer"
+                                title={`${link.name} Profile`}
+                                className='block w-10 h-10 leading-10 text-center rounded-full border-2 border-purple-color text-purple-color sm:hover:bg-purple-color sm:hover:text-white transition'
+                            >
+                                <span className='sr-only'>{link.name}</span>
+                                <i className={`fa-brands fa-${link.fontAwesomeIcon2} fa-fw`}></i>
+                            </a>
+                        </li>
+                    )))
+            }
         </ul>
     )
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SkillCard({ index, skillData: { name, percentage } }) {
+function SkillCard({ index, skillData: { name, percentage, icon_url } }) {
     return (
         <div
             data-aos='fade'
@@ -9,7 +9,7 @@ function SkillCard({ index, skillData: { name, percentage } }) {
         >
             <picture>
                 <img
-                    src={`${process.env.PUBLIC_URL}/assets/images/skills/${name}.svg`}
+                    src={icon_url}
                     alt={name}
                     width={50}
                     height={50}
