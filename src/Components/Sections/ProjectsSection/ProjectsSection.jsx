@@ -3,18 +3,33 @@ import SectionHeader from '../Components/SectionHeader';
 import { useQuery } from '@tanstack/react-query';
 import ProjectCard from './Components/ProjectCard';
 
-function ProjectsSection() {
+// REPOS IDS:
+const reposIds = [
+    948443163, // EStatein
+    948750269, // Photographer-Portfolio
+    943975537, // Pinnacle-Bank
+    960465622, // Quran.co
+    921847559, // reset-countries-api
+    948746558, // Stream-Vibe
+];
 
+const fetchRepos = async () => {
+    try {
+        const res = await fetch(`https://api.github.com/users/mustafa-sayed-m/repos`);
+        return await res.json();
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+const filterRepos = (repos) => {
+    return repos.filter(repo => reposIds.includes(repo.id));
+};
+
+function ProjectsSection() {
     const { data, isLoading } = useQuery({
         queryKey: ['github_repos'],
-        queryFn: async () => {
-            try {
-                const res = await fetch(`https://api.github.com/users/mustafa-sayed-m/repos`);
-                return await res.json();
-            } catch (err) {
-                console.log(err);
-            }
-        },
+        queryFn: fetchRepos,
         refetchOnWindowFocus: false
     });
 
@@ -32,8 +47,7 @@ function ProjectsSection() {
                         isLoading ? (
                             <>Loading...</>
                         ) : (
-                            data
-                                .filter(repo => (repo.id !== 960445720 && repo.id !== 616718455))
+                            (filterRepos(data) || [])
                                 .slice(0, 6)
                                 .map((repo, index) => (
                                     <ProjectCard projectData={repo} index={index} key={index} />
