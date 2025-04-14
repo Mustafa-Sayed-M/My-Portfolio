@@ -2,7 +2,7 @@ import React from 'react';
 import CardOverlay from './CardOverlay';
 import Technologies from './Technologies';
 
-function ProjectCard({ index, projectData: { name, description, image, technologies } }) {
+function ProjectCard({ index, projectData: { name, description, image, technologies, github, homepage } }) {
     return (
         <div
             data-aos='fade'
@@ -13,7 +13,7 @@ function ProjectCard({ index, projectData: { name, description, image, technolog
             <a
                 target='_blank'
                 rel="noreferrer"
-                href={`/`}
+                href={homepage}
                 className='image-container aspect-[1/0.5] overflow-hidden rounded-md block mb-3 relative group'
             >
                 {/* Image */}
@@ -37,7 +37,7 @@ function ProjectCard({ index, projectData: { name, description, image, technolog
                 <h3 className='capitalize font-semibold text-lg line-clamp-1 flex-1'>{name.replaceAll('-', ' ')}</h3>
                 {/* Github */}
                 <a
-                    href={`/`}
+                    href={github}
                     target='_blank'
                     rel="noreferrer"
                     title='Go To Github Repo'
