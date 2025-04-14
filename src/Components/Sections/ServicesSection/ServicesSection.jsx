@@ -1,9 +1,12 @@
 import React from 'react';
 import SectionHeader from '../Components/SectionHeader';
-import servicesData from '../../../Data/services.json';
 import ServiceCard from './Components/ServiceCard';
+import useFetchProfileData from '../../../Hooks/useFetchProfileData';
 
 function ServicesSection() {
+
+    const { data, isLoading } = useFetchProfileData();
+
     return (
         <section className='services-section bg-section-bg-color' id='services'>
             <div className='container'>
@@ -15,7 +18,10 @@ function ServicesSection() {
                 {/* Services Cards */}
                 <div className='services-cards grid md:grid-cols-2 gap-5'>
                     {
-                        servicesData.map((service, index) => (<ServiceCard serviceData={service} index={index} key={index} />))
+                        isLoading ? (
+                            <>Loading...</>
+                        ) : (
+                            (data.services || []).map((service, index) => (<ServiceCard serviceData={service} index={index} key={index} />)))
                     }
                 </div>
             </div>

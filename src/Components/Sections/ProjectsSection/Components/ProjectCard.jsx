@@ -1,17 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import CardOverlay from './CardOverlay';
 import Technologies from './Technologies';
-import { fetchTechnologies, githubRowUrl } from '../../../../Utils/api';
 
-function ProjectCard({ index, projectData: { id, full_name, homepage, name, description, html_url } }) {
-
-    const { data: technologiesData, isLoading: technologiesIsLoading } = useQuery({
-        queryKey: [`technologies_${name}_${id}`],
-        queryFn: async () => fetchTechnologies(full_name),
-        refetchOnWindowFocus: false
-    });
-
+function ProjectCard({ index, projectData: { name, description, image, technologies } }) {
     return (
         <div
             data-aos='fade'
@@ -22,17 +13,17 @@ function ProjectCard({ index, projectData: { id, full_name, homepage, name, desc
             <a
                 target='_blank'
                 rel="noreferrer"
-                href={homepage || `https://${full_name.split('/')[0].toLowerCase()}.github.io/${name}/`}
+                href={`/`}
                 className='image-container aspect-[1/0.5] overflow-hidden rounded-md block mb-3 relative group'
             >
                 {/* Image */}
                 <picture>
                     <img
-                        src={`${githubRowUrl}/${full_name}/main/preview.webp`}
+                        src={image}
                         style={{
                             transformOrigin: 'top center'
                         }}
-                        alt='...'
+                        alt={name || '...'}
                         width={400}
                         height={400}
                         className='w-full h-auto group-hover:scale-110 duration-500 ease-in-out transition'
@@ -46,7 +37,7 @@ function ProjectCard({ index, projectData: { id, full_name, homepage, name, desc
                 <h3 className='capitalize font-semibold text-lg line-clamp-1 flex-1'>{name.replaceAll('-', ' ')}</h3>
                 {/* Github */}
                 <a
-                    href={html_url}
+                    href={`/`}
                     target='_blank'
                     rel="noreferrer"
                     title='Go To Github Repo'
@@ -61,7 +52,7 @@ function ProjectCard({ index, projectData: { id, full_name, homepage, name, desc
             {/* Split Line */}
             <hr className='border-purple-color my-3' />
             {/* Technologies */}
-            <Technologies technologiesData={technologiesData} technologiesIsLoading={technologiesIsLoading} />
+            <Technologies technologiesData={technologies} />
         </div>
     )
 }

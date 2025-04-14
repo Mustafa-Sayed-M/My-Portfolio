@@ -1,29 +1,22 @@
 import React from 'react';
 
-function Technologies({ technologiesIsLoading, technologiesData }) {
+function Technologies({ technologiesData }) {
     return (
         <ul className='flex items-center'>
             {
-                technologiesIsLoading ? (
-                    Array.from({ length: 4 }).map((_, index) => (<li
-                        key={index}
-                        className={`w-10 h-10 flex items-center justify-center bg-slate-900 border border-slate-700 animate-pulse rounded-full -ms-2 first-of-type:ms-0`}
-                    ></li>))
-                ) : (
-                    technologiesData.map((techUrl, index) => (<li
-                        key={index}
-                        className={`w-10 h-10 flex items-center justify-center bg-slate-900 rounded-full border border-purple-color -ms-2 first-of-type:ms-0`}
-                    >
-                        <picture>
-                            <img
-                                src={techUrl}
-                                alt={'Tech Icon'}
-                                width={20}
-                                height={20}
-                            />
-                        </picture>
-                    </li>))
-                )
+                technologiesData.map(({ name, icon_url }, index) => (<li
+                    key={index}
+                    className={`w-10 h-10 flex items-center justify-center bg-slate-900 rounded-full border border-purple-color -ms-2 first-of-type:ms-0`}
+                >
+                    <picture>
+                        <img
+                            src={icon_url}
+                            alt={name || '...'}
+                            width={20}
+                            height={20}
+                        />
+                    </picture>
+                </li>))
             }
         </ul>
     )

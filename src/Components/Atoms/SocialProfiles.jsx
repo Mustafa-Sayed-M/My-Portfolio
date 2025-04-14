@@ -1,14 +1,9 @@
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import { fetchSocialProfiles } from '../../Utils/api';
+import useFetchProfileData from '../../Hooks/useFetchProfileData';
 
 function SocialProfiles({ className }) {
 
-    const { data, isLoading } = useQuery({
-        queryKey: ['social_profiles'],
-        queryFn: fetchSocialProfiles,
-        refetchOnWindowFocus: false
-    });
+    const { data, isLoading } = useFetchProfileData();
 
     return (
         <ul className={`flex items-center justify-center gap-2 max-md:w-full ${className}`}>
@@ -16,7 +11,7 @@ function SocialProfiles({ className }) {
                 isLoading ? (
                     <>Loading...</>
                 ) : (
-                    (data || []).map((link, index) => (
+                    (data.social_profiles || []).map((link, index) => (
                         <li
                             key={index}
                             data-aos='fade-left'

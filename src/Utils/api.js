@@ -1,7 +1,4 @@
-export const a = '';
-export const githubRowUrl = 'https://raw.githubusercontent.com';
-const profileDataUrl = `https://my-profile-data.vercel.app`;
-const reposUrl = `https://api.github.com/users/mustafa-sayed-m/repos`;
+const baseUrl = 'https://my-profile-data.vercel.app';
 
 const fetchData = async (endpoint) => {
     try {
@@ -12,18 +9,14 @@ const fetchData = async (endpoint) => {
     }
 };
 
-export const fetchSocialProfiles = async () => {
-    return await fetchData(`${profileDataUrl}/social_profiles.json`);
+export const fetchProfileData = async () => {
+    return await fetchData(`${baseUrl}/profile.json`);
 };
 
 export const fetchSkills = async () => {
-    return await fetchData(`${profileDataUrl}/skills.json`);
+    return await fetchData(`${baseUrl}/skills.json`);
 };
 
-export const fetchRepos = async () => {
-    return await fetchData(reposUrl);
+export const fetchProjects = async () => {
+    return await fetchData(`${baseUrl}/projects.json`);
 };
-
-export const fetchTechnologies = async (full_name) => {
-    return await fetchData(`${githubRowUrl}/${full_name}/main/technologies.json`);
-}
