@@ -48,4 +48,4 @@ Want to work together? Feel free to reach out via **[LinkedIn](https://www.linke
 
 ---
 
-© 2024 [Your Name]. All rights reserved.
+© 2024 Mustafa Sayed. All rights reserved.
