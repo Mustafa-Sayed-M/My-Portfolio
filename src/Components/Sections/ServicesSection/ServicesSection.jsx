@@ -1,11 +1,16 @@
 import React from 'react';
 import SectionHeader from '../Components/SectionHeader';
 import ServiceCard from './Components/ServiceCard';
-import useFetchProfileData from '../../../Hooks/useFetchProfileData';
+import { useQuery } from '@tanstack/react-query';
+import { fetchServices } from '../../../Utils/api';
 
 function ServicesSection() {
 
-    const { data, isLoading } = useFetchProfileData();
+    const { data, isLoading } = useQuery({
+        queryKey: ['services'],
+        queryFn: fetchServices,
+        refetchOnWindowFocus: false
+    });
 
     return (
         <section className='services-section bg-section-bg-color' id='services'>
@@ -21,7 +26,7 @@ function ServicesSection() {
                         isLoading ? (
                             <>Loading...</>
                         ) : (
-                            (data.services || []).map((service, index) => (<ServiceCard serviceData={service} index={index} key={index} />)))
+                            (data || []).map((service, index) => (<ServiceCard serviceData={service} index={index} key={index} />)))
                     }
                 </div>
             </div>

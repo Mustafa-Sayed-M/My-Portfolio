@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SkillCard({ index, skillData: { name, percentage, icon_url } }) {
+function SkillCard({ index, skillData: { name, level, image } }) {
     return (
         <div
             data-aos='fade'
@@ -9,7 +9,7 @@ function SkillCard({ index, skillData: { name, percentage, icon_url } }) {
         >
             <picture>
                 <img
-                    src={icon_url}
+                    src={image}
                     alt={name}
                     width={50}
                     height={50}
@@ -17,7 +17,7 @@ function SkillCard({ index, skillData: { name, percentage, icon_url } }) {
                 />
             </picture>
             <h3 className='uppercase font-semibold mb-1'>{name}</h3>
-            <p className='font-medium text-gray-color'>{percentage}%</p>
+            <p className='font-medium text-gray-color'>{level}%</p>
         </div>
     )
 }

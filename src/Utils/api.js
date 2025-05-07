@@ -1,4 +1,4 @@
-const baseUrl = 'https://my-profile-data.vercel.app';
+const apiUrl = 'https://my-portfolio-backend-teal.vercel.app/api';
 
 const fetchData = async (endpoint) => {
     try {
@@ -10,13 +10,17 @@ const fetchData = async (endpoint) => {
 };
 
 export const fetchProfileData = async () => {
-    return await fetchData(`${baseUrl}/profile.json`);
-};
-
-export const fetchSkills = async () => {
-    return await fetchData(`${baseUrl}/skills.json`);
+    return await fetchData(`https://my-profile-data.vercel.app/profile.json`);
 };
 
 export const fetchProjects = async () => {
-    return await fetchData(`${baseUrl}/projects.json`);
+    return await fetchData(`${apiUrl}/projects`);
+};
+
+export const fetchServices = async () => {
+    return await fetchData(`${apiUrl}/services`);
+};
+
+export const fetchSkills = async () => {
+    return await fetchData(`${apiUrl}/skills`);
 };
