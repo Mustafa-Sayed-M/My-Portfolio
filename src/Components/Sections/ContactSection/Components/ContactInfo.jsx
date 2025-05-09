@@ -13,7 +13,7 @@ function ContactInfo() {
                     isLoading ? (
                         <>Loading...</>
                     ) : (
-                        (data.contact_info || []).map((contact, index) => (
+                        (data.profile[0].contact_info || []).map((contact, index) => (
                             <li
                                 key={index}
                                 data-aos="fade-left"

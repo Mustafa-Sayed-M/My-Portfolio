@@ -11,7 +11,7 @@ function SocialProfiles({ className }) {
                 isLoading ? (
                     <>Loading...</>
                 ) : (
-                    (data.social_profiles || []).map((link, index) => (
+                    (data.profile[0].social_profiles || []).map((link, index) => (
                         <li
                             key={index}
                             data-aos='fade-left'
